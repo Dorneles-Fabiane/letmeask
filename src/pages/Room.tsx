@@ -1,15 +1,16 @@
+import { FormEvent, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { database } from '../services/firebase';
+import { useAuth } from '../hooks/useAuth';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
+import { Question } from '../components/Question/index';
 
 import logoImg from '../assets/images/logo.svg';
 
 import '../styles/room.scss';
-import { FormEvent, useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
-import { useEffect } from 'react';
 
 type RoomParams = {
    id: string;
@@ -25,7 +26,7 @@ type FirebaseQuestions = Record<string, {
    isHighlighted: boolean;
 }>
 
-type Question = {
+type QuestionType = {
    id: string;
    author: {
       name: string;
@@ -42,9 +43,9 @@ export function Room() {
 
    const params = useParams<RoomParams>();
 
-   const [ newQuestion, setNewQuestion ] = useState('');
-   const [ questions, setQuestions ] = useState<Question[]>([]);
-   const [ title, setTitle ] = useState('');
+   const [newQuestion, setNewQuestion] = useState('');
+   const [questions, setQuestions] = useState<QuestionType[]>([]);
+   const [title, setTitle] = useState('');
 
    const roomId = params.id;
 
@@ -74,11 +75,11 @@ export function Room() {
    async function handleSendQuestion(event: FormEvent) {
       event.preventDefault();
 
-      if(newQuestion.trim() === '') {
+      if (newQuestion.trim() === '') {
          return;
       }
 
-      if(!user) {
+      if (!user) {
          throw new Error('You must be logged in');
       }
 
@@ -102,25 +103,25 @@ export function Room() {
          <header>
             <div className="content">
                <img src={logoImg} alt="letMeAsk" />
-               <RoomCode code={roomId}/>
+               <RoomCode code={roomId} />
             </div>
          </header>
 
          <main>
             <div className="room-title">
                <h1>Sala {title}</h1>
-               { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+               {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
             </div>
 
             <form onSubmit={handleSendQuestion}>
-               <textarea 
+               <textarea
                   placeholder="O que você quer perguntar?"
                   onChange={event => setNewQuestion(event.target.value)}
                   value={newQuestion}
                />
 
                <div className="form-footer">
-                  { user ? (
+                  {user ? (
                      <div className="user-info">
                         <img src={user.avatar} alt={user.name} />
                         <span>{user.name}</span>
@@ -132,7 +133,17 @@ export function Room() {
                </div>
             </form>
 
-            { JSON.stringify(questions)}
+            <div className="question-list">
+               {questions.map(question => {
+                  return (
+                     <Question
+                        key={question.id}
+                        content={question.content}
+                        author={question.author}
+                     />
+                  );
+               })}
+            </div>
          </main>
       </div>
    );
