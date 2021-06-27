@@ -11,6 +11,7 @@
 
    <p align="center">
       <a href="#-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <a href="#-Dependencias">Dependencias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-licença">Licença</a>
    </p>
 
@@ -35,3 +36,7 @@
    - firebase
    - node-sass
    - react-router-dom
+
+   ### 📝 Licença
+   
+   - [Licença MIT](LICENSE.md)
