@@ -1,0 +1,19 @@
+#page-room {
+   @media(max-width: 600px) {
+
+      img {
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      header .content > div {
+         margin-top: 20px;
+      }
+      
+      #admin {
+         display: block;
+         align-items: center;
+      }
+   }
+}

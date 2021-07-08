@@ -71,7 +71,7 @@ export function AdminRoom() {
       <>
          <div id="page-room">
             <header>
-               <div className="content">
+               <div id="admin" className="content">
                   <img src={logoImg} alt="letMeAsk" />
                   <div>
                      <RoomCode code={roomId} />
@@ -119,7 +119,7 @@ export function AdminRoom() {
                            <button
                               type="button"
                               onClick={handleOpenDeleteModal}
-                              //onClick={() => handleDeleteQuestion(question.id)}
+                           //onClick={() => handleDeleteQuestion(question.id)}
                            >
                               <img src={deleteImg} alt="Remover pergunta" />
                            </button>
