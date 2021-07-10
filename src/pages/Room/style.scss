@@ -1,6 +1,6 @@
 #page-room {
    header {
-      padding: 24px;
+      padding: 1.5rem;
       border-bottom: 1px solid #e2e2e2;
 
       .content {
@@ -11,7 +11,7 @@
          align-items: center;
 
          > img {
-            max-height: 45px;
+            max-height: 2.813rem;
          }
 
          > div {
@@ -19,8 +19,9 @@
             gap: 16px;
 
             button {
-               height: 40px;
+               height: 2.5rem;
             }
+
          }
       }
    }
@@ -29,6 +30,10 @@
       max-width: 800px;
       margin: 0 auto;
 
+      @media(max-width: 865px) {
+         margin: 1.563rem;
+      }
+
       .room-title {
          margin: 32px 0 24px;
          display: flex;
@@ -36,7 +41,7 @@
 
          h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 24px;
+            font-size: 1.5rem;
             color: #29292e;
          }
    
@@ -47,7 +52,7 @@
             padding: 8px 16px;
             color: #FFF;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 0.875rem;
          }
       }
 
@@ -83,12 +88,12 @@
                   margin-left: 8px;
                   color: #29292E;
                   font-weight: 500;
-                  font-size: 14px;
+                  font-size: 0.875rem;
                }
             }
    
             > span {
-               font-size: 14px;
+               font-size: 0.875rem;
                color: #737380;
                font-weight: 500;
 
@@ -97,7 +102,7 @@
                   border: 0;
                   color: #835AFD;
                   text-decoration: underline;
-                  font-size: 14px;
+                  font-size: 0.875rem;
                   font-weight: 500;
                   cursor: pointer;
                }
@@ -108,5 +113,5 @@
       .question-list {
          margin-top: 32px;
       }
-   }
+   } 
 }
